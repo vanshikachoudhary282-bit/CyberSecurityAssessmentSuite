@@ -614,90 +614,46 @@ def login():
     password = data.get("password")
 
     conn = sqlite3.connect(DB_PATH)
-
     cursor = conn.cursor()
 
     cursor.execute(
-
         """
-
         SELECT id,
                username,
                password
-
         FROM users
-
         WHERE email = ?
-
         """,
-
         (email,)
-
     )
 
     user = cursor.fetchone()
 
-
-    if user and check_password_hash(
-
-        user[2],
-
-        password
-
-    ):
-
+    if user and check_password_hash(user[2], password):
 
         cursor.execute(
-
             """
-
-            INSERT INTO login_history
-
-            (username)
-
+            INSERT INTO login_history (username)
             VALUES (?)
-
             """,
-
             (user[1],)
-
         )
 
         conn.commit()
-
         conn.close()
 
-
-        
-    return jsonify(
-            { 
-
-              "success": True,
-
-              "user_id": user[0],
-
-              "username": user[1]
-            }
-    )
-
+        return jsonify({
+            "success": True,
+            "user_id": user[0],
+            "username": user[1]
+        })
 
     conn.close()
 
-
-    return jsonify(
-
-        {
-
-            "success": False,
-
-            "message":
-            "Invalid Credentials"
-
-        }
-
-    )
-
-
+    return jsonify({
+        "success": False,
+        "message": "Invalid Credentials"
+    }), 401
 
 
 
