@@ -22,7 +22,7 @@ function Register({ setShowRegister }) {
 
             const response = await axios.post(
 
-                "${API}/register",
+                `${API}/register`,
 
                 {
                     username,
