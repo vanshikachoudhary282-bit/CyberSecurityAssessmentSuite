@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import API from "../api";
 function Register({ setShowRegister }) {
 
     const [username, setUsername] = useState("");
@@ -22,7 +22,7 @@ function Register({ setShowRegister }) {
 
             const response = await axios.post(
 
-                "http://127.0.0.1:5000/register",
+                "${API}/register",
 
                 {
                     username,

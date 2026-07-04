@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import API from "../api";
 function WebsiteScanner() {
 
     const [url, setUrl] = useState("");
@@ -13,7 +13,7 @@ function WebsiteScanner() {
             console.log("Username:", localStorage.getItem("username"));
 
             const response = await axios.post(
-    "http://127.0.0.1:5000/scan",
+    "${API}/scan",
     {
         url,
         user_id: localStorage.getItem("userId")
@@ -32,7 +32,7 @@ function WebsiteScanner() {
     try {
 
         const response = await axios.get(
-            "http://127.0.0.1:5000/report",
+            "${API}/report",
             {
                 responseType: "blob"
             }

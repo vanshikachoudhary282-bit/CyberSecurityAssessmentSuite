@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import API from "../api";
 import SecurityAnalytics from "./SecurityAnalytics";
 import PasswordAnalyzer from "./PasswordAnalyzer";
 import WebsiteScanner from "./WebsiteScanner";
@@ -27,7 +27,7 @@ const loadStats = async () => {
     try {
 
         const response = await axios.post(
-    "http://127.0.0.1:5000/dashboard-stats",
+    "${API}/dashboard-stats",
     {
         user_id: localStorage.getItem("userId")
     }
@@ -37,7 +37,7 @@ const loadStats = async () => {
 const downloadReport = async () => {
     try {
         const response = await axios.get(
-            "http://127.0.0.1:5000/report",
+            "${API}/report",
             {
                 responseType: "blob"
             }
@@ -63,7 +63,7 @@ const downloadReport = async () => {
 setStats(response.data);
 
 const historyResponse = await axios.post(
-    "http://127.0.0.1:5000/history",
+    "${API}/history",
     {
         user_id: localStorage.getItem("userId")
     }
