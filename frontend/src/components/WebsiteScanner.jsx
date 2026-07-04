@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import API from "../../api";
-{
+
+
+function WebsiteScanner() {
     const [url, setUrl] = useState("");
     const [result, setResult] = useState(null);
 

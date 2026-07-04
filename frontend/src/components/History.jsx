@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import API from "../api";
+import API from "../../api";
 function History() {
 
     const [history, setHistory] = useState([]);
@@ -14,7 +14,7 @@ function History() {
         try {
 
             const response = await axios.post(
-                "${API}/history",
+                `${API}/history`,
                 {
                     user_id: localStorage.getItem("userId")
                 }
