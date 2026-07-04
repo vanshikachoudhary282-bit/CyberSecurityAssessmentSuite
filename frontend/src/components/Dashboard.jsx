@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import API from "../api";
+import API from "../../api";
 import SecurityAnalytics from "./SecurityAnalytics";
 import PasswordAnalyzer from "./PasswordAnalyzer";
 import WebsiteScanner from "./WebsiteScanner";
